@@ -36,5 +36,45 @@ Installez les dépendances du projet
 npm i
 ou
 npm install (si vous préférez)
+# Lancer les tests Cypress
+
+## Prérequis supplémentaires
+- L'application frontend lancée sur `http://localhost:4200`
+- Le backend lancé sur `http://localhost:8081`
+
+## Installation de Cypress
+```
+npm install
+```
+
+## Lancer les tests
+
+### Interface graphique
+```
+npx cypress open
+```
+
+### En ligne de commande
+```
+npx cypress run
+```
+## Génération du rapport
+
+Cypress génère automatiquement un rapport vidéo et des screenshots dans :
+```
+cypress/videos/
+cypress/screenshots/
+```
+
+Pour générer un rapport HTML avec Mochawesome :
+```
+npm install --save-dev mochawesome
+npx cypress run --reporter mochawesome
+## Fichiers de tests
+- `cypress/e2e/api.cy.ts` — Tests API backend
+- `cypress/e2e/smoke_tests.cy.ts` — Smoke tests
+- `cypress/e2e/xss.cy.ts` — Test sécurité XSS
+- `cypress/e2e/connexion.cy.ts` — Tests fonctionnels connexion
+- `cypress/e2e/panier.cy.ts` — Tests fonctionnels panier
 ```
 
