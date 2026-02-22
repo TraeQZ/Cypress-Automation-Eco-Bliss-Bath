@@ -13,7 +13,7 @@ services:
     networks:
       - symfony
     healthcheck:
-      test: ['CMD', '/usr/local/bin/healthcheck.sh', '--innodb_initialized']
+      test: ['CMD', 'mariadb-admin', 'ping', '-h', 'localhost', '-u', 'root', '-pjardin']
       start_period: 15s
       interval: 10s
       timeout: 10s
