@@ -14,9 +14,8 @@ it('Sécurité : Vérifier la vulnérabilité XSS dans les commentaires', () => 
                 comment: xssPayload,
                 rating: 5,
             }
-        }).then(() => {
-            cy.visit('http://localhost:4200/#/product/4');
-            cy.get('body').should('not.contain', xssPayload);
+        }).then((response) => {
+            expect(response.status).to.eq(400);
         });
     });
 });

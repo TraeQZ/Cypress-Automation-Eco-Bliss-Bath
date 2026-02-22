@@ -23,9 +23,8 @@ describe('Smoke Test - Vérification du formulaire de connexion & Ajout au panie
     cy.url().should('include', '/products/')
     //ON VERIFIE LA PRESENCE DU BOUTON D'AJOUT AU PANIER, la clique et vérifie que le produit est ajouté au panier
     cy.get('[data-cy="detail-product-add"]').should('be.visible').click();
-    cy.wait( 10000 )
     // Vérification que le produit a été ajouté au panier
-    cy.get('[data-cy="nav-link-cart"]').click();
+    cy.get('[data-cy="nav-link-cart"]', { timeout: 10000 }).click();
     // On s'assure d'être sur la page panier
     cy.url().should('include', '/cart')
     cy.get('[data-cy="cart-line-quantity"]').first().should('not.have.value', '0');
