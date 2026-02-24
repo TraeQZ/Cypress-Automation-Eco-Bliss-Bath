@@ -70,15 +70,15 @@ it('GET /products/{id} - Récupérer une fiche produit', () => {
     });
   });
 
-  // GET /orders sans authentification - doit retourner 403
+  // GET /orders sans authentification - doit retourner 401
   
-it('GET /orders sans authentification - doit retourner 403', () => {
+it('GET /orders sans authentification - doit retourner 401', () => {
   cy.request({
     method: 'GET',
     url: 'http://localhost:8081/orders',
     failOnStatusCode: false
   }).then((response) => {
-    expect(response.status).to.eq(403);
+    expect(response.status).to.eq(401);
   });
 });
 

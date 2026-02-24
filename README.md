@@ -24,7 +24,7 @@ cd Eco-Bliss-Bath-V2
 ```
 Pour démarrer l'API avec ça base de données.
 ```
-docker compose up -d
+docker-compose up -d
 ```
 # Pour démarrer le frontend de l'applicatif
 Rendez-vous dans le dossier frontend
@@ -40,7 +40,7 @@ npm install (si vous préférez)
 
 ## Prérequis supplémentaires
 - L'application frontend lancée sur `http://localhost:4200`
-- Le backend lancé sur `http://localhost:8081`
+- Le backend lancé sur `http://localhost:8081/api/doc`
 
 ## Installation de Cypress
 ```
