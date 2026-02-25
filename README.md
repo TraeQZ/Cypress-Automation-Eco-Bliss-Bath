@@ -41,7 +41,7 @@ npm install (si vous préférez)
 ## Prérequis supplémentaires
 - L'application frontend lancée sur `http://localhost:4200`
 - Le backend lancé sur `http://localhost:8081/api/doc`
-
+ 
 ## Installation de Cypress
 ```
 npm install

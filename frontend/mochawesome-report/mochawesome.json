@@ -1,0 +1,85 @@
+{
+  "stats": {
+    "suites": 0,
+    "tests": 1,
+    "passes": 0,
+    "pending": 0,
+    "failures": 1,
+    "start": "2026-02-25T06:21:03.698Z",
+    "end": "2026-02-25T06:21:06.735Z",
+    "duration": 3037,
+    "testsRegistered": 1,
+    "passPercent": 0,
+    "pendingPercent": 0,
+    "other": 0,
+    "hasOther": false,
+    "skipped": 0,
+    "hasSkipped": false
+  },
+  "results": [
+    {
+      "uuid": "71619b51-c1e1-4d5a-ac02-888a63047a04",
+      "title": "",
+      "fullFile": "cypress\\e2e\\xss.cy.ts",
+      "file": "cypress\\e2e\\xss.cy.ts",
+      "beforeHooks": [],
+      "afterHooks": [],
+      "tests": [
+        {
+          "title": "Sécurité : Vérifier la vulnérabilité XSS dans les commentaires",
+          "fullTitle": "Sécurité : Vérifier la vulnérabilité XSS dans les commentaires",
+          "timedOut": null,
+          "duration": 2925,
+          "state": "failed",
+          "speed": null,
+          "pass": false,
+          "fail": true,
+          "pending": false,
+          "context": null,
+          "code": "const xssPayload = '<script>alert(\"XSS\")</script>';\ncy.request('POST', 'http://localhost:8081/login', {\n    username: 'test2@test.fr',\n    password: 'testtest'\n}).then((loginRes) => {\n    cy.request({\n        method: 'POST',\n        url: 'http://localhost:8081/reviews',\n        headers: { Authorization: `Bearer ${loginRes.body.token}` },\n        body: {\n            title: \"Test Sécurité\",\n            comment: xssPayload,\n            rating: 5,\n        }\n    }).then((response) => {\n        expect(response.status).to.eq(400);\n    });\n});",
+          "err": {
+            "message": "AssertionError: expected 200 to equal 400",
+            "estack": "AssertionError: expected 200 to equal 400\n    at Context.eval (webpack://eco-bliss-bath/./cypress/e2e/xss.cy.ts:18:39)\n    at getRet (http://localhost:57072/__cypress/runner/cypress_runner.js:122807:20)\n    at tryCatcher (http://localhost:57072/__cypress/runner/cypress_runner.js:1777:23)\n    at Promise.attempt.Promise.try (http://localhost:57072/__cypress/runner/cypress_runner.js:4285:29)\n    at Context.thenFn (http://localhost:57072/__cypress/runner/cypress_runner.js:122818:66)\n    at Context.then (http://localhost:57072/__cypress/runner/cypress_runner.js:123069:21)",
+            "diff": "- 200\n+ 400\n"
+          },
+          "uuid": "fbb98e49-eaff-4338-9cc4-8e8d600689bc",
+          "parentUUID": "71619b51-c1e1-4d5a-ac02-888a63047a04",
+          "isHook": false,
+          "skipped": false
+        }
+      ],
+      "suites": [],
+      "passes": [],
+      "failures": [
+        "fbb98e49-eaff-4338-9cc4-8e8d600689bc"
+      ],
+      "pending": [],
+      "skipped": [],
+      "duration": 2925,
+      "root": true,
+      "rootEmpty": false,
+      "_timeout": 2000
+    }
+  ],
+  "meta": {
+    "mocha": {
+      "version": "7.2.0"
+    },
+    "mochawesome": {
+      "options": {
+        "quiet": false,
+        "reportFilename": "mochawesome",
+        "saveHtml": true,
+        "saveJson": true,
+        "consoleReporter": "spec",
+        "useInlineDiffs": false,
+        "code": true
+      },
+      "version": "7.1.4"
+    },
+    "marge": {
+      "options": null,
+      "version": "6.3.2"
+    }
+  }
+}
