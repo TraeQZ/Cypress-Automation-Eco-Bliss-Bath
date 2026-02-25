@@ -69,19 +69,6 @@ it('GET /products/{id} - Récupérer une fiche produit', () => {
       });
     });
   });
-
-  // GET /orders sans authentification - doit retourner 401
-  
-it('GET /orders sans authentification - doit retourner 401', () => {
-  cy.request({
-    method: 'GET',
-    url: 'http://localhost:8081/orders',
-    failOnStatusCode: false
-  }).then((response) => {
-    expect(response.status).to.eq(401);
-  });
-});
-
 // Ajout de produit en rupture de stock - doit échouer
   it('Fail: Ajouter un produit en rupture de stock (Alerte Bug API)', () => {
     cy.request('POST', 'http://localhost:8081/login', {
@@ -99,6 +86,19 @@ it('GET /orders sans authentification - doit retourner 401', () => {
       });
     });
   });
+  // GET /orders sans authentification - doit retourner 401
+  
+it('GET /orders sans authentification - doit retourner 401', () => {
+  cy.request({
+    method: 'GET',
+    url: 'http://localhost:8081/orders',
+    failOnStatusCode: false
+  }).then((response) => {
+    expect(response.status).to.eq(401);
+  });
+});
+
+
 
   // --- TESTS AVIS (REVIEWS) ---
 //Test de validation de limites - Note > 5
